@@ -1,0 +1,19 @@
+For people wanting to convert multiple .ts files to .mp4, just save the following code as .bat in windows, place it in the folder and run it:
+对于想要将多个.ts文件转换为.mp4的人，只需在Windows中将以下代码保存为.bat，将其放置在文件夹中并运行它：
+
+@echo off
+
+for %%f in (*.ts) do (
+对于%%f in（*.ts）do（
+
+set "filename=%%~nf"  设置“文件名=%%~nf”
+
+setlocal enabledelayedexpansion
+设置本地启用延迟扩展
+
+ffmpeg -y -i "%%f" -vcodec copy -acodec copy -map 0:v -map 0:a "!filename!.mp4"
+ffmpeg -y -i“%%f”-vcodec copy -acodec copy -map 0：v -map 0：a“！文件名！. MP4”
+
+endlocal
+
+)
